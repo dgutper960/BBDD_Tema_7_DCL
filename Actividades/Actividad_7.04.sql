@@ -52,7 +52,7 @@ WHERE
 2. Finalizar la transacción deshaciendo las operaciones anteriores. Comprobar */
 
 rollback;
-commit;
+
 
 /*
 3. Inicia una nueva transacción que contenga las siguientes operaciones:
@@ -215,7 +215,7 @@ SAVEPOINT a;
 
 # Actualizar los precios de todos los libros en 10% de incremento
 
-start transaction;
+
 UPDATE libros 
 SET 
     precio_venta = precio_venta + (precio_venta * 0.10);
@@ -226,7 +226,7 @@ SAVEPOINT b;
 
 # Eliminar los libros no vendidos
 
-start transaction;
+
 DELETE FROM libros 
 WHERE
     id NOT IN (SELECT DISTINCT
@@ -235,7 +235,7 @@ WHERE
         lineasventas);
 
 # Deshacer a partir del SAVEPOINT a
-ROLLBACK TO a;  -- > Llegado a este punto me dice que SAVEPOINT a no existe (does not exist)
+ROLLBACK to a; 
 
-
+commit;
 

@@ -1,1 +1,4 @@
-select password(1234);
+select password('ubrique01');
+
+select password('arcos01');
+
